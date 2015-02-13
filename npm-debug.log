@@ -1,0 +1,103 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'install' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.36
+4 verbose node symlink /usr/bin/node
+5 warn package.json test@0.0.0 No repository field.
+6 verbose readDependencies using package.json deps
+7 verbose install where, deps [ '/home/meneal/Documents/TestGeneration',
+7 verbose install   [ 'esprima',
+7 verbose install     'faker',
+7 verbose install     'istanbul',
+7 verbose install     'mock-fs',
+7 verbose install     'mockfs',
+7 verbose install     'underscore',
+7 verbose install     'random-js' ] ]
+8 info preinstall test@0.0.0
+9 verbose readDependencies using package.json deps
+10 verbose already installed skipping esprima@^1.2.3 /home/meneal/Documents/TestGeneration
+11 verbose already installed skipping faker@^2.1.2 /home/meneal/Documents/TestGeneration
+12 verbose already installed skipping istanbul@^0.3.5 /home/meneal/Documents/TestGeneration
+13 verbose already installed skipping mock-fs@^2.3.2 /home/meneal/Documents/TestGeneration
+14 verbose already installed skipping mockfs@^0.1.5 /home/meneal/Documents/TestGeneration
+15 verbose already installed skipping underscore@^1.7.0 /home/meneal/Documents/TestGeneration
+16 verbose cache add [ 'random-js@^1.04', null ]
+17 verbose cache add name=undefined spec="random-js@^1.04" args=["random-js@^1.04",null]
+18 verbose parsed url { protocol: null,
+18 verbose parsed url   slashes: null,
+18 verbose parsed url   auth: null,
+18 verbose parsed url   host: null,
+18 verbose parsed url   port: null,
+18 verbose parsed url   hostname: null,
+18 verbose parsed url   hash: null,
+18 verbose parsed url   search: null,
+18 verbose parsed url   query: null,
+18 verbose parsed url   pathname: 'random-js@^1.04',
+18 verbose parsed url   path: 'random-js@^1.04',
+18 verbose parsed url   href: 'random-js@^1.04' }
+19 verbose cache add name="random-js" spec="^1.04" args=["random-js","^1.04"]
+20 verbose parsed url { protocol: null,
+20 verbose parsed url   slashes: null,
+20 verbose parsed url   auth: null,
+20 verbose parsed url   host: null,
+20 verbose parsed url   port: null,
+20 verbose parsed url   hostname: null,
+20 verbose parsed url   hash: null,
+20 verbose parsed url   search: null,
+20 verbose parsed url   query: null,
+20 verbose parsed url   pathname: '^1.04',
+20 verbose parsed url   path: '^1.04',
+20 verbose parsed url   href: '^1.04' }
+21 verbose addNamed [ 'random-js', '^1.04' ]
+22 verbose addNamed [ null, null ]
+23 silly lockFile 96b7a387-random-js-1-04 random-js@^1.04
+24 verbose lock random-js@^1.04 /home/meneal/.npm/96b7a387-random-js-1-04.lock
+25 silly addNameRange { name: 'random-js',
+25 silly addNameRange   range: '>=1.4.0-0 <2.0.0-0',
+25 silly addNameRange   hasData: false }
+26 verbose request where is /random-js
+27 verbose request registry https://registry.npmjs.org/
+28 verbose request id 59834c96e2e5865b
+29 verbose url raw /random-js
+30 verbose url resolving [ 'https://registry.npmjs.org/', './random-js' ]
+31 verbose url resolved https://registry.npmjs.org/random-js
+32 verbose request where is https://registry.npmjs.org/random-js
+33 info trying registry request attempt 1 at 14:10:50
+34 verbose etag "1NPKYVQSLEBRUY9LR15DWGR4B"
+35 http GET https://registry.npmjs.org/random-js
+36 http 304 https://registry.npmjs.org/random-js
+37 silly registry.get cb [ 304,
+37 silly registry.get   { date: 'Fri, 13 Feb 2015 19:10:50 GMT',
+37 silly registry.get     server: 'Apache',
+37 silly registry.get     via: '1.1 varnish',
+37 silly registry.get     'last-modified': 'Fri, 13 Feb 2015 19:10:50 GMT',
+37 silly registry.get     'cache-control': 'max-age=60',
+37 silly registry.get     etag: '"1NPKYVQSLEBRUY9LR15DWGR4B"',
+37 silly registry.get     age: '0',
+37 silly registry.get     'x-served-by': 'cache-jfk1021-JFK',
+37 silly registry.get     'x-cache': 'MISS',
+37 silly registry.get     'x-cache-hits': '0',
+37 silly registry.get     'x-timer': 'S1423854650.668611,VS0,VE76',
+37 silly registry.get     vary: 'Accept',
+37 silly registry.get     'content-length': '0',
+37 silly registry.get     'keep-alive': 'timeout=10, max=50',
+37 silly registry.get     connection: 'Keep-Alive' } ]
+38 verbose etag https://registry.npmjs.org/random-js from cache
+39 silly addNameRange number 2 { name: 'random-js', range: '>=1.4.0-0 <2.0.0-0', hasData: true }
+40 silly addNameRange versions [ 'random-js', [ '1.0.0', '1.0.1', '1.0.2', '1.0.3', '1.0.4' ] ]
+41 silly lockFile 96b7a387-random-js-1-04 random-js@^1.04
+42 silly lockFile 96b7a387-random-js-1-04 random-js@^1.04
+43 error notarget No compatible version found: random-js@'>=1.4.0-0 <2.0.0-0'
+43 error notarget Valid install targets:
+43 error notarget ["1.0.0","1.0.1","1.0.2","1.0.3","1.0.4"]
+43 error notarget
+43 error notarget This is most likely not a problem with npm itself.
+43 error notarget In most cases you or one of your dependencies are requesting
+43 error notarget a package version that doesn't exist.
+44 error System Linux 3.13.0-37-generic
+45 error command "/usr/bin/node" "/usr/bin/npm" "install"
+46 error cwd /home/meneal/Documents/TestGeneration
+47 error node -v v0.10.36
+48 error npm -v 1.4.28
+49 error code ETARGET
+50 verbose exit [ 1, true ]

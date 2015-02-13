@@ -14,6 +14,7 @@
     "istanbul": "^0.3.5",
     "mock-fs": "^2.3.2",
     "mockfs": "^0.1.5",
-    "underscore": "^1.7.0"
+    "underscore": "^1.7.0",
+    "random-js": "^1.0.4"
   }
 }
