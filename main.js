@@ -15,6 +15,7 @@ var rangeLower = 0;
 var max = 999;
 var min = 213;
 var filePathAlias = 0;
+var flag = 0;
 
 
 
@@ -110,15 +111,19 @@ function generateTestCases()
 					var args = Object.keys(params).map( function(k) {return params[k]; }).join(",");
 					if(formatArg){
 						var array = args.split(',');
-						content += "subject." + funcName + "(" + array[0] + ',' + array[1] + ",'" + array[2] + "')\n";
-
+						if(flag++){
+							content += "subject." + funcName + "(" + array[0] + ',' + 
+								array[1] + ", {normalize: " + array[2] + "})\n";
+						}else{
+							content += "subject." + funcName + "(" + array[0] + ',' + 
+								array[1] + ", {normalize: " + !array[2] + "})\n";
+						}
 					}else if(blacklistArg){
 						var number = faker.phone.phoneNumberFormat();
 						var array = number.split('-');
 						array[0] = args;
 						var fin = array.join('');
-						content += "subject." + funcName + "('" +  fin +  "')\n"; 
-						
+						content += "subject." + funcName + "('" +  fin +  "')\n"; 	
 					}else{
 						// Emit simple test case.
 						content += "subject.{0}({1});\n".format(funcName, args );
@@ -238,6 +243,21 @@ function constraints(filePath)
                     }
                 }
 
+                if( child.type === 'BinaryExpression' && child.operator == "==")
+                {
+                	var randQVal = Math.floor((Math.random() * 10) +1);
+                    if( child.left.type == 'Identifier' && params.indexOf( child.left.name ) > -1)
+                    {
+                        // get expression from original source code:
+                        var rightHand = buf.substring(child.right.range[0], child.right.range[1])
+                        functionConstraints[funcName].constraints.push( 
+                            {
+                                ident: child.left.name,
+                                value: randQVal
+                            });
+                    }
+                }
+
 				if( child.type == "CallExpression" && 
 					 child.callee.property &&
 					 child.callee.property.name =="readFileSync" )
@@ -282,8 +302,7 @@ function constraints(filePath)
 							functionConstraints[funcName].constraints.push(
 							{
 								ident: child.left.argument.name,
-								value: child.left.prefix,
-								inverse: !child.left.prefix
+								value: child.left.prefix
 							});
 						}
 					}
@@ -293,20 +312,19 @@ function constraints(filePath)
 				if(child.type == "LogicalExpression" && child.operator == "||"){
 					if(child.right.type == "UnaryExpression"){
 						if(child.right.argument.type == "MemberExpression"){
+							console.log("child left prefix " + !child.left.prefix);
+							var notTrue = "\"" + !child.left.prefix + "\"";
 							if(child.right.argument.object.type == "Identifier" && params.indexOf(child.right.argument.object.name) > -1){
 								functionConstraints[funcName].constraints.push(
 								{
 									ident: child.right.argument.object.name,
-									value: child.right.argument.object.name,
-									inverse: child.right.argument.property.name
+									value: child.left.prefix
 								});
 							}
 						}
 					}
 				}
-
-				
-
+		
 				//begin large block to pull nested aliases
 				if(child.type == "VariableDeclarator" && child.init.type == "CallExpression"){
 					if(params.indexOf(child.init.arguments[0].name) > -1){

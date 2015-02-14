@@ -1,5 +1,8 @@
 ##Test Generation Homework
 
-Here is a screenshot of my coverage report, it is also in the folder cov as an html file:
-
-![coverage](https://github.com/meneal/TestGeneration/blob/master/img/coverage.png)
+=============================== Coverage summary ===============================
+Statements   : 100% ( 58/58 )
+Branches     : 100% ( 16/16 )
+Functions    : 100% ( 5/5 )
+Lines        : 100% ( 57/57 )
+================================================================================
